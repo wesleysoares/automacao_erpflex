@@ -1,3 +1,5 @@
+require 'faker'
+
 Dado("que estou logado no sistema") do
     visit 'http://www.new.erpflex.com.br/'
 
@@ -5,24 +7,33 @@ Dado("que estou logado no sistema") do
     fill_in 'senha', with: '1234'
 
     click_button 'LoginSubmit'
+
+    sleep 3
 end
   
-Quando("faço o cadastro de solicitante com") do |table|
+Quando("faço o cadastro de solicitante") do
     visit 'http://www.new.erpflex.com.br/erp/cadastros/solicitante#'
+    
+    sleep 3
 
     click_button 'Incluir'
 
-    @solicitante = table.rows_hash
-
-    fill_in 'SLCSOL_Desc', with: @solicitante[:nome]
-    fill_in 'SLCSOL_Email', with: @solicitante[:email]
-    fill_in 'SLCSOL_Departamento', with: @solicitante[:departamento]
-    fill_in 'SLCSOL_Obs', with: @solicitante[:observações]
+    fill_in 'SLCSOL_Desc', with: @nome = Faker::Name.name
+    fill_in 'SLCSOL_Email', with: @email = Faker::Internet.email
+    fill_in 'SLCSOL_Departamento', with: Faker::Job.field
+    fill_in 'SLCSOL_Obs', with: Faker::Job.title
 
     click_button 'mtd-save'
+
+    sleep 3
 end
 
 Então("o cadastro deve ser salvo com sucesso") do
-    expect(page).to have_content @solicitante[:nome]
+    fill_in 'searchGrid', with: @nome
+    find('span', class: 'lupaGridSearch').click
+
+    sleep 3
+
+    expect(page).to have_content @email
 end
   
