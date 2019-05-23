@@ -1,7 +1,9 @@
 require 'faker'
 
 Dado("que estou logado no sistema") do
-    visit 'http://www.new.erpflex.com.br/'
+    page.driver.browser.manage.window.maximize
+    
+    visit '/'
 
     fill_in 'login', with: 'automacao.teste'
     fill_in 'senha', with: '1234'
@@ -12,7 +14,7 @@ Dado("que estou logado no sistema") do
 end
   
 Quando("faço o cadastro de solicitante") do
-    visit 'http://www.new.erpflex.com.br/erp/cadastros/solicitante#'
+    visit '/erp/cadastros/solicitante#'
     
     sleep 3
 
