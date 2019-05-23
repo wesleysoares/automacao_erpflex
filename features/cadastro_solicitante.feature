@@ -9,10 +9,10 @@ Funcionalidade: Cadastro de solicitante
 Cenário: Cadastro simples
     Dado que estou logado no sistema
     Quando faço o cadastro de solicitante com
-        | Nome         | Wesley Soares                         |
-        | Email        | wesley.ssoares1@gmail.com             |
-        | Departamento | TI                                    |
-        | Observações  | Meu primeiro cadastro de solicitante. |
-        | Status       | Ativo                                 |
+        | nome         | Wesley Soares                         |
+        | email        | wesley.ssoares1@gmail.com             |
+        | departamento | TI                                    |
+        | observações  | Meu primeiro cadastro de solicitante. |
+
     Então o cadastro deve ser salvo com sucesso
 
