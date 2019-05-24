@@ -11,6 +11,8 @@ Dado("que estou logado no sistema") do
     click_button 'LoginSubmit'
 
     sleep 3
+
+    save_screenshot(full: true)
 end
   
 Quando("faço o cadastro de solicitante") do
@@ -25,6 +27,8 @@ Quando("faço o cadastro de solicitante") do
     fill_in 'SLCSOL_Departamento', with: Faker::Job.field
     fill_in 'SLCSOL_Obs', with: Faker::Job.title
 
+    save_screenshot(full: true)
+
     click_button 'mtd-save'
 
     sleep 3
@@ -35,6 +39,8 @@ Então("o cadastro deve ser salvo com sucesso") do
     find('span', class: 'lupaGridSearch').click
 
     sleep 3
+
+    save_screenshot(full: true)
 
     expect(page).to have_content @email
 end
