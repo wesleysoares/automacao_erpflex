@@ -10,9 +10,10 @@ Dado("que estou logado no sistema") do
 
     click_button 'LoginSubmit'
 
-    sleep 3
-
     save_screenshot(full: true)
+
+    sleep 3
+    
 end
   
 Quando("faço o cadastro de solicitante") do
